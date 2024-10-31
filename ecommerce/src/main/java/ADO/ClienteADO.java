@@ -64,3 +64,33 @@ public class ClienteADO {
         return clientesList;
     }
 }
+
+public boolean atualizar(Cliente cliente){
+    String sql = "UPDATE Clientes SET Nome = ?, Email = ?, Telefone = ? WHERE idCliente = ?";
+    try (PreparedStatement ps = conexao.prepareStatement(sql)) {
+        ps.setString(1, cliente.getNome());
+        ps.setString(2, cliente.getEmail());
+        ps.setString(3, cliente.getTelefone());
+        ps.setInt(4, cliente.getIdCliente());
+        ps.executeUpdate();
+        return true;
+        
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return false;
+    }
+}
+
+public boolean excluir(int idCliente){
+    String sql = "DELETE FROM Clientes WHERE idCliente = ?";
+    try (PreparedStatement ps = conexao.prepareStatement(sql)) {
+        ps.setInt(1, idCliente);
+        ps.executeUpdate();
+        return true;
+        
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return false;
+    }
+}
+
