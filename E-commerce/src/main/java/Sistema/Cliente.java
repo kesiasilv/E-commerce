@@ -16,7 +16,7 @@ public class Cliente {
     private int idCliente;
     private String nome;
     private String email;
-    private String telefone; // Alterado para String
+    private String telefone; 
     private Date dataCadastro;
 
     public Cliente(int idCliente, String nome, String email, String telefone, Date dataCadastro) {
